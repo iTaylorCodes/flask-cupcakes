@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+			integrity="undefined"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="static/style.css" />
+		<title>Cupcakes</title>
+	</head>
+	<body>
+		<h1 class="display-1">Cupcakes</h1>
+		<div class="container">
+			<ul id="cupcake-list"></ul>
+		</div>
+		<hr />
+		<div class="container">
+			<h3 class="display-3 text-center">Add New Cupcake</h3>
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<form id="add-cupcake-form">
+						{{form.hidden_tag()}} {% for field in form if field.widget.input_type != 'hidden'%}
+						<div class="form-group">
+							{{field.label}} {{field(class_="form-control")}} {% for err in field.errors %}
+							<small class="form-text text-danger"> {{err}} </small>
+							{% endfor %}
+						</div>
+						{% endfor %}
+						<button class="btn btn-success btn-lg float-end">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+			integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+		<script src="static/cupcakes.js"></script>
+	</body>
+</html>
